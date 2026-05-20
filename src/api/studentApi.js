@@ -1,27 +1,22 @@
-const BASE_URL = 'http://localhost:3000/posts';
+const BASE_URL = 'https://pixabay.com/api/';
+
+
+
+const API_KEY = '55396511-9fa47eb753a2484966d5aafba'; 
+
+
 
 
 
 async function getPosts() {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(`${BASE_URL}?key=${API_KEY}&q=cars`);
     return await res.json();
 }
 
 
 
 
-async function createPost(studentData) {
-    const options = {   
-            method: "POST",
-            body: JSON.stringify(studentData),
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8",
-            },
-        };
 
-        const result = await fetch(BASE_URL, options)
-        return result
-}
 
 
 
