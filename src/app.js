@@ -2,14 +2,15 @@ import { getPosts } from "./api/studentApi";
 
 getPosts("cats").then(res => console.log(res));
 
-
-
 const form = document.querySelector(".search-form")
 const gallery = document.querySelector(".gallery")
 const loadMore = document.querySelector(".load-more-btn")
 
+let page = 1;
+let currentQuery = "";
+
 function createItemsMarkup(array) {
-  const items = array.map(({ webformatURL, likes, views, comments, downloads }) => {
+  return array.map(({ webformatURL, likes, views, comments, downloads }) => {
     return `
       <li>
         <div class="photo-card">
@@ -24,24 +25,22 @@ function createItemsMarkup(array) {
       </li>
     `;
   }).join("");
-  
-  gallery.innerHTML = items
 }
 
-
 form.addEventListener("submit", async (event) => {
-    event.preventDefault()
+  event.preventDefault();
 
+  const input = event.target.query.value;
+  const res = await getPosts(input);
 
+  page = 1;
+  currentQuery = input;
+  loadMore.classList.remove("is-hidden");
+  gallery.innerHTML = createItemsMarkup(res.hits);
+});
 
-    const input = event.target.query.value
-    const res = await getPosts(input)
-    // console.log(res);
-    createItemsMarkup(res.hits)
-})
-
-
-
-
-
-
+loadMore.addEventListener("click", async () => {
+  page += 1;
+  const res = await getPosts(currentQuery, page);
+  gallery.innerHTML += createItemsMarkup(res.hits);
+});
