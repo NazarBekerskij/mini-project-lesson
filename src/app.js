@@ -40,7 +40,6 @@ form.addEventListener("submit", async (event) => {
 });
 
 
-
 loadMore.addEventListener("click", async () => {
   page += 1;
   const res = await getPosts(currentQuery, page);
