@@ -12,6 +12,8 @@
             margin-bottom: 30px;
         }
 
+        
+
         .search-form input {
             width: 100%;
             max-width: 400px;
@@ -99,6 +101,6 @@
         }
 
         /* Ховаємо кнопку за замовчуванням, поки нічого не знайшли */
-        .is-hidden {
+        /* .is-hidden {
             display: none;
-        }
+        } */
