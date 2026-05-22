@@ -39,6 +39,8 @@ form.addEventListener("submit", async (event) => {
   gallery.innerHTML = createItemsMarkup(res.hits);
 });
 
+
+
 loadMore.addEventListener("click", async () => {
   page += 1;
   const res = await getPosts(currentQuery, page);
