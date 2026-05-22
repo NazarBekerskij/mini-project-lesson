@@ -1,59 +1,6 @@
 import { getPosts } from "./api/studentApi";
 
-
-
-
-getPosts().then(res => console.log(res))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+getPosts("cats").then(res => console.log(res));
 
 
 
