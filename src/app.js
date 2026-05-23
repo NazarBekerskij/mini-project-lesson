@@ -1,6 +1,6 @@
 import { getPosts } from "./api/studentApi";
 
-getPosts("cats").then(res => console.log(res));
+// getPosts("cats").then(res => console.log(res));
 
 const form = document.querySelector(".search-form")
 const gallery = document.querySelector(".gallery")
@@ -42,6 +42,8 @@ form.addEventListener("submit", async (event) => {
 
 loadMore.addEventListener("click", async () => {
   page += 1;
+  console.log(page);
+  
   const res = await getPosts(currentQuery, page);
   gallery.innerHTML += createItemsMarkup(res.hits);
 });
